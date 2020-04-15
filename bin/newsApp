@@ -2,4 +2,4 @@
 
 require_relative "../lib/newsApp"
 
-CLI.new.start
+newsApp::CLI.new.start
