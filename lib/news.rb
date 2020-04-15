@@ -26,6 +26,10 @@ class NewsApp::News
 
   end
 
+  def to_s
+    author.capitalize
+  end
+
   def save
     @@all << self
   end
