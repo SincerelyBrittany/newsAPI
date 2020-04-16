@@ -37,7 +37,7 @@ end
       a = NewsApp::News.all[i]
       NewsApp::APIManager.get_more_news_info(a) if !a.more? #located in NewsApp.rb
       puts "Title: #{a.title}"
-      # puts "URL: #{a.url}"
+      puts "URL: #{a.url}"
       puts "press any key to continue"
       gets
     end

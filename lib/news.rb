@@ -10,16 +10,18 @@ class NewsApp::News
 
     def self.mass_create_from_api(newsarr)
         newsarr.each do |newshash|
-            new(newshash["title"])
+            new(newshash[:title],newshash[:url])
         end
     end
 
-    attr_accessor :title, :description
+    attr_accessor :title, :url, :description, :author, :content
 
 
-    def initialize(title)
+    def initialize(title, url)
         @title = title
-        @description= nil
+        @url = url
+        @description = description
+        @author,@content= nil,nil
         save
     end
 
@@ -39,8 +41,14 @@ class NewsApp::News
        !!@description
   end
 
-  def populate_data(height: , weight: , description: , types:, id:)
-    self.description = description
+  def populate_data(description:)
+     self.description = description
+     puts "#{description}"
+ end
+
+ def full_details
+        puts "Article title : #{title}  url: #{name}"
+        puts "description : #{description}"
   end
 
 end
