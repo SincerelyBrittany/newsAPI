@@ -40,7 +40,11 @@ class APIManager
   BASE_URL = 'http://newsapi.org/v2/top-headlines?'\
         'country=us&'\
 
+<<<<<<< HEAD
   
+=======
+    API_KEY = 'apiKey='
+>>>>>>> e8f69b939fbe093b16e6c34c112195018cbd7f0c
 
   def self.getnews #uses the NET::HTTP library to send an HTTP request from our program
     url = BASE_URL + API_KEY
