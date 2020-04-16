@@ -7,7 +7,7 @@ class NewsApp::APIManager
   BASE_URL = 'http://newsapi.org/v2/top-headlines?'\
         'country=us&'\
 
-    API_KEY = 'apiKey=9a4690dd6f4541548698fc4eff7209ab'
+    API_KEY = 'apiKey='
 
   def self.getnews
     url = BASE_URL + API_KEY
