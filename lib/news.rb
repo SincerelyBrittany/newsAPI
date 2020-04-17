@@ -41,14 +41,16 @@ class NewsApp::News
        !!@description
   end
 
-  def populate_data(description:)
+  def populate_data(description:, content:, author:)
      self.description = description
-     puts "#{description}"
+     self.content = content
+     self.author = author
  end
 
  def full_details
         puts "Article title : #{title}  url: #{name}"
         puts "description : #{description}"
+        puts "content: #{content}"
   end
 
 end
