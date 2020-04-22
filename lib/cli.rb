@@ -38,8 +38,9 @@ class NewsApp::CLI
       news_options_loop
     elsif user_input == "2"
       puts "This is option 2"
+      get_query_input
       query_selection
-      news_options_loop
+      news_options_loop2
     elsif user_input == "exit" #MUST GET TO WORK
       puts "Thank you come again!"
       return
@@ -58,7 +59,12 @@ class NewsApp::CLI
   end
 
   def get_news_data
-      NewsApp::APIManager.getnews(@page,@pageSize)
+      if !NewsApp::APIManager.getnews(@page,@pageSize)
+        puts "There is no page #{@page} -- returning to page #{@page -= 1}"
+        sleep(3)
+        @page -= 1
+
+      end
   end
 
   def get_query_input
@@ -84,8 +90,8 @@ class NewsApp::CLI
                 return
             when "next"
                 @page += 1
-                _, stop = get_page_range
-                if NewsApp::News.all.length < stop
+                start, stop = get_page_range
+                if NewsApp::News.all.length <= start
                     get_news_data
                 end
             when "prev"
@@ -104,7 +110,8 @@ class NewsApp::CLI
     def display_article(i)
       start, stop = get_page_range
       a = NewsApp::News.all[start...stop][i]
-      NewsApp::APIManager.get_more_news_info(a) if !a.more? #located in NewsApp.rb
+      # binding.pry
+      #NewsApp::APIManager.get_more_news_info(a) if !a.more? #located in NewsApp.rb
       puts a.full_details
       puts 'Press any key to go back'
       gets
@@ -132,10 +139,8 @@ class NewsApp::CLI
     end
 
     def display_articles
-      start, stop = get_page_range
+        start, stop = get_page_range
         puts "\n\nPAGE #{@page}"
-        # stop = NewsApp::News.all.length
-        # start = stop - 20
         NewsApp::News.all[start...stop].each.with_index do |p,i|
         # NewsApp::News.all.each.with_index do |p,i|
         puts "#{i+1}. #{p}"
