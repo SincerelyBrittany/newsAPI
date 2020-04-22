@@ -5,7 +5,8 @@ class NewsApp::CLI
 
   def initialize
        @page = 1
-       @pageSize = 5
+       @pageSize = 20
+       @user_query_search_input
    end
 
   def start
@@ -16,7 +17,9 @@ class NewsApp::CLI
 
   def introduction
     puts "\n\n\n\n\n\n"
-    puts "The TOP US News Stories"
+    puts "--------------------------------------------------------------------------------------------------------"
+    puts "----------------------------------- Welcome To The News App!--------------------------------------------"
+    puts "--------------------------------------------------------------------------------------------------------"
     sleep(2)
     puts "\n"
   end
@@ -36,6 +39,7 @@ class NewsApp::CLI
     elsif user_input == "2"
       puts "This is option 2"
       query_selection
+      news_options_loop
     elsif user_input == "exit" #MUST GET TO WORK
       puts "Thank you come again!"
       return
@@ -54,7 +58,16 @@ class NewsApp::CLI
   end
 
   def get_news_data
-      NewsApp::APIManager.getnews(@page, @pageSize)
+      NewsApp::APIManager.getnews(@page,@pageSize)
+  end
+
+  def get_query_input
+    puts "Please type what you would like to search"
+    @user_query_search_input = gets.chomp.downcase
+  end
+
+  def query_selection
+    NewsApp::APIManager.seach_by_query(@user_query_search_input, @page, @pageSize)
   end
 
   def news_options_loop
@@ -87,10 +100,11 @@ class NewsApp::CLI
         end
       end
 
+
     def display_article(i)
-      a = NewsApp::News.all[i]
-      b = i- 1
-      NewsApp::APIManager.get_more_news_info(i, a) if !a.more? #located in NewsApp.rb
+      start, stop = get_page_range
+      a = NewsApp::News.all[start...stop][i]
+      NewsApp::APIManager.get_more_news_info(a) if !a.more? #located in NewsApp.rb
       puts a.full_details
       puts 'Press any key to go back'
       gets
@@ -117,15 +131,11 @@ class NewsApp::CLI
       instuctions
     end
 
-    def query_selection
-      puts "Please type what you would like to search"
-      user_query_search_input = gets.chomp.downcase
-      NewsApp::APIManager.seach_by_query(user_query_search_input)
-    end
-
     def display_articles
       start, stop = get_page_range
         puts "\n\nPAGE #{@page}"
+        # stop = NewsApp::News.all.length
+        # start = stop - 20
         NewsApp::News.all[start...stop].each.with_index do |p,i|
         # NewsApp::News.all.each.with_index do |p,i|
         puts "#{i+1}. #{p}"

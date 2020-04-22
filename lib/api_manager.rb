@@ -1,23 +1,33 @@
 class NewsApp::APIManager
       #Stores API endpoint URL in a constant at the top of the class
 
-      # https://newsapi.org/v2/top-headlines?country=de&category=business&apiKey=9a4690dd6f4541548698fc4eff7209ab&pageSize=5
-
       BASE_URL = 'http://newsapi.org/v2/top-headlines?'
 
-      # page = pagenum
-      # pageSize = limit
-
-      ARRAY = []
-      def self.getnews(page=1, pageSize=5) #uses the NET::HTTP library to send an HTTP request from our program
+      def self.getnews(page,pageSize) #uses the NET::HTTP library to send an HTTP request from our program
           # url = BASE_URL + "country=us&" + API_KEY
-          url = BASE_URL + "country=us&" + "#{(page -1)*pageSize}&pageSize=#{pageSize}&" + API_KEY
-
+          url = BASE_URL + "country=us&" + API_KEY  + "&page=#{page}" + "&pageSize=#{pageSize}"
           uri = URI.parse(url)
           response = Net::HTTP.get_response(uri) #NET::HTTP is a Ruby library that allows your program or application to send HTTP requests.
           res = JSON.parse(response.body)
           posts = res["articles"] #articles is an array
 
+          # page = 1
+          # per_page = posts.count
+          # total = res["totalResults"]
+          # last_page = (total.to_f / per_page.to_f).round
+          #
+          # while page <= last_page
+          #   pagination_url = "#{url}" + "&page=#{page}"
+          #   uri_pagination = URI.parse(pagination_url)
+          #   response_pagination = Net::HTTP.get_response(uri_pagination)
+          #   res_pagination = JSON.parse(response_pagination.body)
+          #   posts_pagination = res_pagination["articles"]
+          #
+          #   puts pagination_url
+          #   puts "Page: #{page}"
+          #   puts ''
+
+          array =[]
           posts.each do |post|
             new_hash = {
               title: post["title"],
@@ -26,45 +36,55 @@ class NewsApp::APIManager
               description: post["description"],
               content: post["content"]
             }
-            ARRAY << new_hash
-            end
-            NewsApp::News.mass_create_from_api(ARRAY)
-            return {
-           next: res["next"],
-           prev: res["previous"]
-       }
+            array << new_hash
+          end
+          NewsApp::News.mass_create_from_api(array)
         end
 
 
-        def self.get_more_news_info(index,post)
-            try = ARRAY[index]
-            description = try[:description]
-            author = try[:author]
-            content = try[:content]
-            post.populate_data(description: description, content:content, author:author)
+        def self.get_more_news_info(post)
+            post.description
+            post.author
+            post.content
+            post.author
+            post.title
+            post.populate_data(description: description, content:content, author:author,title: title, author:author)
         end
 
-        def self.seach_by_query(user_query_search_input)
-        #https://newsapi.org/v2/top-headlines?q=corona&apiKey=9a4690dd6f4541548698fc4eff7209ab
-        array_by_search = []
-        url = BASE_URL + "q=#{user_query_search_input}&" + API_KEY
+        def self.seach_by_query(user_query_search_input,page,pageSize)
+        url = BASE_URL + "q=#{user_query_search_input}&" + API_KEY + "&page=#{page}" + "&pageSize=#{pageSize}"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
         res = JSON.parse(response.body)
         posts = res["articles"]
-        puts posts
 
+        # page = 1
+        # per_page = posts.count
+        # total = res["totalResults"]
+        # last_page = (total.to_f / per_page.to_f).round
+        #
+        # while page <= last_page
+        #   pagination_url = "#{url}" + "&page=#{page}"
+        #   uri_pagination = URI.parse(pagination_url)
+        #   response_pagination = Net::HTTP.get_response(uri_pagination)
+        #   res_pagination = JSON.parse(response_pagination.body)
+        #   posts_pagination = res_pagination["articles"]
+        #
+        #   puts pagination_url
+        #   puts "Page: #{page}"
+        #   puts ''
+
+        search_array = []
         posts.each do |post|
-          new_hash = {
+          hash = {
             title: post["title"],
             url: post["url"],
             author: post["author"],
             description: post["description"],
             content: post["content"]
           }
-          array_by_search << new_hash
-          NewsApp::News.populate_data
-          end
-          NewsApp::News.mass_create_from_api(array_by_search)
+          search_array << hash
+        end
+          NewsApp::News.second_mass_create_from_api(search_array)
         end
 end
