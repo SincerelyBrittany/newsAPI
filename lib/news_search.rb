@@ -1,6 +1,6 @@
 #News is in charge of representing the news
 
-class NewsApp::News_search
+class NewsApp::News_search #NewsSearch
 
   @@all = []
 

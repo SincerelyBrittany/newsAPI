@@ -222,7 +222,7 @@ class NewsApp::CLI
 
     def display_articles2
         start, stop = get_page_range2
-        puts "\n\nPAGE #{@page} of your search for #{@user_query_search_input}"
+        puts "\n\nPAGE #{@page} of your search for #{@user_query_search_input.capitalize}"
         NewsApp::News_search.all[start...stop].each.with_index do |p,i|
         puts "#{i+1}. #{p}"
       end

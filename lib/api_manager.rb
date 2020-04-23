@@ -74,4 +74,5 @@ class NewsApp::APIManager
           puts search_array.length
           return search_array.length > 0
         end
+        # binding.pry
 end
