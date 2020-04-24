@@ -24,7 +24,7 @@ class NewsApp::News
     def initialize(title, url, description,content, author, from_search:)
         @title = title
         @url = url
-        @description = nil
+        @description = description
         @author,@content= author, content
         if from_search == true
           save_to_search
