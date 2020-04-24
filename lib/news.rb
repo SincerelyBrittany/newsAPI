@@ -3,26 +3,34 @@
 class NewsApp::News
 
   @@all = []
+  @@search_array = []
 
     def self.all
         @@all
     end
 
-    def self.mass_create_from_api(newsarr)
+    def self.search_array
+        @@search_array
+    end
+
+    def self.mass_create_from_api(newsarr, from_search: false)
         newsarr.each do |newshash|
-            new(newshash[:title],newshash[:url],newshash[:description],newshash[:content],newshash[:author])
+            new(newshash[:title],newshash[:url],newshash[:description],newshash[:content],newshash[:author], from_search: from_search)
         end
     end
 
     attr_accessor :title, :url, :description, :author, :content
 
-
-    def initialize(title, url, description,content, author)
+    def initialize(title, url, description,content, author, from_search:)
         @title = title
         @url = url
         @description = nil
         @author,@content= author, content
-        save
+        if from_search == true
+          save_to_search
+        else from_search == false
+          save
+        end
     end
 
     def to_s
@@ -37,20 +45,17 @@ class NewsApp::News
       @@all << self
   end
 
+  def save_to_search
+      @@search_array << self
+  end
+
   def self.destroy_all
-      @@all = []
+      @@search_array = []
   end
 
   def more?
        !!@description
   end
-
-  def populate_data(title:, author:, description:, content:)
-     self.title = title
-     self.description = description
-     self.content = content
-     self.author = author
- end
 
  def full_details
 

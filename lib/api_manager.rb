@@ -24,7 +24,7 @@ class NewsApp::APIManager
             array << new_hash
           end
           if array.length > 0
-             NewsApp::News.mass_create_from_api(array)
+             NewsApp::News.mass_create_from_api(array, from_search: false)
           end
           return array.length > 0
         end
@@ -57,7 +57,7 @@ class NewsApp::APIManager
         #  puts ''
 
         search_array = []
-        posts.map do |post|
+        posts.each do |post|
           hash = {
             title: post["title"],
             url: post["url"],
@@ -69,7 +69,7 @@ class NewsApp::APIManager
 
           end
           if search_array.length > 0
-          NewsApp::News_search.second_mass_create_from_api(search_array)
+          NewsApp::News.mass_create_from_api(search_array, from_search: true)
           end
           puts search_array.length
           return search_array.length > 0

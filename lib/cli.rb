@@ -2,11 +2,11 @@
 #
 class NewsApp::CLI
 
-
   def initialize
        @page = 1
        @pageSize = 20
        @user_query_search_input = nil
+       @from_search = nil
   end
 
   def start
@@ -36,11 +36,13 @@ class NewsApp::CLI
 
   def menu_input(user_input)
     if user_input == "1"
+      @from_search = false
       news_options_loop
     elsif user_input == "2"
+      @from_search = true
       get_query_input
       query_selection
-      news_options_loop2
+      news_options_loop
     elsif user_input == "exit" #MUST GET TO WORK
       puts "Thank you come again!"
       return
@@ -62,7 +64,7 @@ class NewsApp::CLI
   def get_news_data
       if !NewsApp::APIManager.getnews(@page,@pageSize)
         puts "There is no page #{@page} -- returning to page #{@page -= 1}"
-        sleep(3)
+        sleep(1)
         @page -= 1
       end
   end
@@ -75,7 +77,7 @@ class NewsApp::CLI
   def query_selection
     if !NewsApp::APIManager.seach_by_query(@user_query_search_input, @page, @pageSize)
         puts "There is no page #{@page} -- returning to page #{@page - 1}"
-        sleep(3)
+        sleep(1)
         @page -= 1
     end
   end
@@ -92,46 +94,22 @@ class NewsApp::CLI
             when "return" # if return make input == user_input
                 NewsApp::News.destroy_all
                 @page = 1
+                @from_search = nil
                 main_menu
                 return
             when "next"
-                @page += 1
-                start, stop = get_page_range
+                if @from_search == false
+                  @page += 1
+                  start, stop = get_page_range
                   if NewsApp::News.all.length <= start
                       get_news_data
                   end
-            when "prev"
-                if @page <= 1
-                    puts "You cannot get that page, you are alredy on page 1!"
-                else
-                    @page -= 1
-                end
-            else
-                display_article(input)
-            end
-        end
-    end
-
-  def news_options_loop2
-    loop do
-      second_menu2
-      input = get_article_choice2
-        case input
-            when "exit"
-                break
-            when "invalid"
-                next
-            when "return" # if return make input == user_input
-                NewsApp::News_search.destroy_all
-                @page = 1
-                @user_query_search_input = nil
-                main_menu
-                return
-            when "next"
-                @page += 1
-                start, stop = get_page_range
-                if NewsApp::News_search.all.length <= start
-                    query_selection
+                else @from_search == true
+                  @page += 1
+                  start, stop = get_page_range
+                  if NewsApp::News.search_array.length <= start
+                      query_selection
+                  end
                 end
             when "prev"
                 if @page <= 1
@@ -140,54 +118,38 @@ class NewsApp::CLI
                     @page -= 1
                 end
             else
-                display_article2(input)
+              display_article(input)
             end
         end
     end
-
 
   def display_article(i)
+      if @from_search == false
       start, stop = get_page_range
       a = NewsApp::News.all[start...stop][i]
-      # binding.pry
-      #NewsApp::APIManager.get_more_news_info(a) if !a.more? #located in NewsApp.rb
       puts a.full_details
       puts 'Press any key to go back'
       gets
+    else @from_search == true
+      start, stop = get_page_range
+      b = NewsApp::News.search_array[start...stop][i]
+      puts b.full_details
+      puts 'Press any key to go back'
+      gets
+    end
   end
 
-  def display_article2(i)
-        start, stop = get_page_range
-        a = NewsApp::News_search.all[start...stop][i]
-        puts a.full_details
-        puts 'Press any key to go back'
-        gets
+  def get_article_choice
+    input = gets.strip.downcase
+    commands = ["exit","return","next", "prev"]
+    return input.downcase if commands.include?(input.downcase)
+    if !valid?(input)
+      puts "Invalid Response, Please Try Again"
+      sleep(3)
+      return "invalid"
+    end
+      return input.to_i - 1
   end
-
-    def get_article_choice ## MUST ADD RETURN TO MAIN MENU
-      input = gets.strip.downcase
-      commands = ["exit","return","next", "prev"]
-      return input.downcase if commands.include?(input.downcase)
-      if !valid?(input)
-        puts "Invalid Response, Please Try Again"
-        sleep(3)
-        return "invalid"
-      end
-        return input.to_i - 1
-    end
-
-
-    def get_article_choice2 ## MUST ADD RETURN TO MAIN MENU
-      input = gets.strip.downcase
-      commands = ["exit","return","next", "prev"]
-      return input.downcase if commands.include?(input.downcase)
-      if !valid2?(input)
-        puts "Invalid Response, Please Try Again"
-        sleep(3)
-        return "invalid"
-      end
-        return input.to_i - 1
-    end
 
     def valid?(i)
       i.to_i.between?(1, NewsApp::News.all.length)
@@ -198,37 +160,24 @@ class NewsApp::CLI
       instuctions
     end
 
-    def display_articles
-        start, stop = get_page_range
-        puts "\n\nPAGE #{@page}"
-        NewsApp::News.all[start...stop].each.with_index do |p,i|
-        puts "#{i+1}. #{p}"
-      end
-    end
-
     def get_page_range
       [(@page - 1) * @pageSize, @page * @pageSize]
     end
 
-
-    def valid2?(i)
-      i.to_i.between?(1, NewsApp::News_search.all.length)
-    end
-
-    def second_menu2
-      display_articles2
-      instuctions
-    end
-
-    def display_articles2
-        start, stop = get_page_range2
+    def display_articles
+        if @from_search == true
+        start, stop = get_page_range
         puts "\n\nPAGE #{@page} of your search for #{@user_query_search_input.capitalize}"
-        NewsApp::News_search.all[start...stop].each.with_index do |p,i|
-        puts "#{i+1}. #{p}"
+          NewsApp::News.search_array[start...stop].each.with_index do |p,i|
+            puts "#{i+1}. #{p}"
+          end
+        else @from_search == false
+          start, stop = get_page_range
+          puts "\n\nPAGE #{@page}"
+          NewsApp::News.all[start...stop].each.with_index do |p,i|
+          puts "#{i+1}. #{p}"
+          end
       end
     end
 
-    def get_page_range2
-      [(@page - 1) * @pageSize, @page * @pageSize]
-    end
 end
