@@ -8,7 +8,7 @@ require_relative "../secret"
 require_relative "./cli"
 require_relative "./api_manager"
 require_relative "./news"
-require_relative "./news"
+
 
 
 

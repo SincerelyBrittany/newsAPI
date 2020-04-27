@@ -26,6 +26,10 @@ class NewsApp::CLI
   end
 
   def main_menu
+    puts
+    puts "-----------------------------------------------------"
+    puts "------------------- Main Menu!-----------------------"
+    puts "-----------------------------------------------------"
     puts "Type ‘1’ to view the Top U.S. Stories"
     puts "Type ‘2’ to Search for a story in the U.S."
     puts "Type ‘exit’ to exit program"
@@ -47,6 +51,8 @@ class NewsApp::CLI
     elsif user_input == "exit" #MUST GET TO WORK
       puts "Thank you come again!"
       return
+    elsif user_input == "credits"
+      credits
     else
       puts "Invalid Response, Please Try Again"
       main_menu
@@ -62,6 +68,16 @@ class NewsApp::CLI
     puts "---------------- Type 'return' to return to main menu -----------------"
     puts
     puts "------------------------ Type 'exit' to exit --------------------------"
+  end
+
+  def credits
+    puts "This app was created by SincerelyBrittany"
+    puts "The API was used by https://newsapi.org/"
+    puts "See more about app on my github https://github.com/SincerelyBrittany/newsAPI"
+    puts
+    puts "press any key to return to the main menu"
+    gets
+    main_menu
   end
 
   def get_news_data

@@ -36,7 +36,7 @@ class NewsApp::APIManager
         posts = res["articles"]
 
         return false if posts == nil
-        
+
         search_array = []
         posts.each do |post|
           hash = {
