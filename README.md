@@ -4,7 +4,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield][https://www.linkedin.com/in/sincerelybrittany/]
 
 
 <!-- PROJECT LOGO -->
@@ -24,9 +23,9 @@
     <br />
     <a href="https://youtu.be/2MunZJC2wrY">View My Demo</a>
     ·
-    <a href="https://github.com/SincerelyBrittany/newsAPI/issues">Report Bug</a>
+    <a href="https://github.com/SincerelyBrittany/newsAPI/issues">Report Bug/Request A Feature</a>
     ·
-    <a href="https://github.com/SincerelyBrittany/newsAPI/issues">Request Feature</a>
+    <a href="https://medium.com/@sincerelybr/my-first-flatiron-project-94824e72e39b">View my Blog</a>
   </p>
 </p>
 
@@ -54,8 +53,6 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-
-
 There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
 
 Here's why:
@@ -75,6 +72,7 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 * [NET::HTTP](https://ruby-doc.org/stdlib-2.7.0/libdoc/net/http/rdoc/Net/HTTP.html)
 * [JSON Gem](https://rubygems.org/gems/json)
 * [Pry Gem](https://rubygems.org/gems/pry/versions/0.10.3)
+* [ReadMe Template](https://github.com/othneildrew/Best-README-Template#about-the-project)
 
 
 <!-- GETTING STARTED -->
@@ -120,13 +118,10 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 
-
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
-
+See the [open issues](https://github.com/SincerelyBrittany/newsAPI/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -139,9 +134,7 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/<github username>/newsApp. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/<github username>/newsApp/blob/master/CODE_OF_CONDUCT.md).
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/SincerelyBrittany/newsAPI. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/SincerelyBrittany/template/blob/master/CODE_OF_CONDUCT.md).
 
 
 <!-- LICENSE -->
@@ -152,12 +145,13 @@ Distributed under the MIT License. See `LICENSE` [MIT License](https://opensourc
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/SincerelyBrittt) - sincerelybr@gmail.com
-Project Link: [https://github.com/your_username/repo_name](https://github.com/SincerelyBrittany/newsAPI)
-
+Your Name - [@SincerelyBrittt](https://twitter.com/SincerelyBrittt) - sincerelybr@gmail.com
+Project Link: [newsAPI](https://github.com/SincerelyBrittany/newsAPI)
+LinkedIn: [LinkedIn](https://www.linkedin.com/in/sincerelybrittany/)
+Medium: [Medium](https://medium.com/@sincerelybr/my-first-flatiron-project-94824e72e39b)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [Ruth GitHub](https://github.com/Rkebede)
 * [Micah Github](https://github.com/micahshute)
-* [Choose an Open Source License](https://choosealicense.com)
+* [Flatiron School](https://flatironschool.com/)
