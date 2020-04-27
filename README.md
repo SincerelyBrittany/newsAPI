@@ -30,9 +30,9 @@
 * [About my Project](#about-my-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
+  <!-- * [Prerequisites](#prerequisites) -->
   * [Installation](#installation)
-* [Usage](#usage)
+<!-- * [Usage](#usage) -->
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -71,18 +71,20 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple installation steps.
 
 And then execute:
 
-    $ bin/newsApp
+```sh
+  $ bin/newsApp
+```
 
-### Prerequisites
+<!-- ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 
 And then execute:
-  $ bundle install
+  $ bundle install -->
 
 
 ### Installation
@@ -102,9 +104,8 @@ const API_KEY = 'ENTER YOUR API';
 ```
 
 
-
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage -->
 
 <!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -146,7 +147,7 @@ Project Link: [newsAPI](https://github.com/SincerelyBrittany/newsAPI)
 <br>
 Connect with me on [LinkedIn](https://www.linkedin.com/in/sincerelybrittany/)
 <br>
-Follow me on [Medium](https://medium.com/@sincerelybr/my-first-flatiron-project-94824e72e39b)
+Follow me on [Medium](https://medium.com/@sincerelybr)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements

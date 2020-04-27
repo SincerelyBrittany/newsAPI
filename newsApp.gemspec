@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name          = "newsApp"
   spec.version       = NewsApp::VERSION
   spec.authors       = ["SincerelyBrittany"]
-  spec.email         = ["BrittanyRussell1993@gmail.com"]
+  spec.email         = ["sincerelybr@gmail.com"]
 
   spec.summary       = %q{ Write a short summary, because RubyGems requires one.}
   spec.description   = %q{Write a longer description or delete this line.}
