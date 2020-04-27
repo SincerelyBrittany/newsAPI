@@ -30,7 +30,7 @@
 * [About my Project](#about-my-project)
   * [Built With](#built-with)
 * [Getting Started](#getting-started)
-  <!-- * [Prerequisites](#prerequisites) -->
+<!-- * [Prerequisites](#prerequisites) -->
   * [Installation](#installation)
 <!-- * [Usage](#usage) -->
 * [Roadmap](#roadmap)
@@ -43,6 +43,12 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About my Project
+
+The project allows a user to display a list of the Top U.S. stories/articles and receive more information on each story.
+
+In addition, it allows a user to search by query for articles in relation to the user input.
+
+
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
