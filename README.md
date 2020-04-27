@@ -1,11 +1,4 @@
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -16,7 +9,7 @@
   <h3 align="center">My First Ruby API Project</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An API that helps the user search and retrieve live articles from all over the web.
     <br />
     <a href="https://newsapi.org/docs"><strong>Explore the docs »</strong></a>
     <br />
@@ -51,9 +44,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About my Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
+<!-- There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need.
 
 Here's why:
 * Your time should be focused on creating something amazing. A project that solves a problem and helps others
@@ -62,7 +55,7 @@ Here's why:
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+A list of commonly used resources that I find helpful are listed in the acknowledgements. -->
 
 ### Built With
 
@@ -97,7 +90,7 @@ And then execute:
 1. Get a free API Key at [https://newsapi.org/](https://newsapi.org/)
 2. Clone the repo
 ```sh
-git clone https://github.com/SincerelyBrittany/newsAPI
+git clone https://github.com/<your_username>/newsAPI
 ```
 3. Install gem packages
 ```sh
@@ -113,9 +106,9 @@ const API_KEY = 'ENTER YOUR API';
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+<!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://example.com)_ -->
 
 
 <!-- ROADMAP -->
@@ -147,7 +140,7 @@ Distributed under the MIT License. See `LICENSE` [MIT License](https://opensourc
 
 Twitter: [@SincerelyBrittt](https://twitter.com/SincerelyBrittt)
 <br>
-Email: sincerelybr@gmail.com
+[Email Me](sincerelybr@gmail.com)
 <br>
 Project Link: [newsAPI](https://github.com/SincerelyBrittany/newsAPI)
 <br>
