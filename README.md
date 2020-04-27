@@ -145,10 +145,15 @@ Distributed under the MIT License. See `LICENSE` [MIT License](https://opensourc
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@SincerelyBrittt](https://twitter.com/SincerelyBrittt) - sincerelybr@gmail.com
+Twitter: [@SincerelyBrittt](https://twitter.com/SincerelyBrittt)
+<br>
+Email: sincerelybr@gmail.com
+<br>
 Project Link: [newsAPI](https://github.com/SincerelyBrittany/newsAPI)
-LinkedIn: [LinkedIn](https://www.linkedin.com/in/sincerelybrittany/)
-Medium: [Medium](https://medium.com/@sincerelybr/my-first-flatiron-project-94824e72e39b)
+<br>
+Connect with me on [LinkedIn](https://www.linkedin.com/in/sincerelybrittany/)
+<br>
+Follow me on [Medium](https://medium.com/@sincerelybr/my-first-flatiron-project-94824e72e39b)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
